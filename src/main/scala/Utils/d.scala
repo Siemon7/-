@@ -1,5 +1,5 @@
 package Utils
 
 object d {
-    prniint000
+    prniint222
 }
