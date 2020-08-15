@@ -1,6 +1,6 @@
 package beans
 
-import Utils.NBF
+import utils.NBF
 
 class Log(val sessionid: String,
           val advertisersid: Int,

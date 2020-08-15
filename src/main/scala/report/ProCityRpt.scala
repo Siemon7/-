@@ -53,13 +53,12 @@ object ProCityRpt {
 
 
 //         判断结果存储路径是否存在，如果存在则删除
-        val hadoopConfiguration = sc.hadoopConfiguration
-//        val fs = FileSystem.get(hadoopConfiguration)
-//
-//        val resultPath = new Path(resultOutputPath)
-//        if(fs.exists(resultPath)) {
-//            fs.delete(resultPath, true)
-//        }
+        val hadoopConfiguration = sc.sparkContext.hadoopConfiguration
+        val fs = FileSystem.get(hadoopConfiguration)
+        val resultPath = new Path(resultOutputPath)
+        if(fs.exists(resultPath)) {
+            fs.delete(resultPath, true)
+        }
 
 
         // 将结果存储的成json文件

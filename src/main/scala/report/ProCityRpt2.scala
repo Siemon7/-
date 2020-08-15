@@ -50,12 +50,15 @@ object ProCityRpt2 {
         df.createOrReplaceTempView("log")
 
         // 按照省市进行分组聚合---》统计分组后的各省市的日志记录条数
-        val result: DataFrame = sc.sql("select provincename, cityname, count(*) ct from log group by provincename, cityname")
+        val result: DataFrame = sc.sql("select * from log ")
 
-
-        // 判断结果存储路径是否存在，如果存在则删除
-
-
+        //         判断结果存储路径是否存在，如果存在则删除
+//        val hadoopConfiguration = sc.sparkContext.hadoopConfiguration
+//        val fs = FileSystem.get(hadoopConfiguration)
+//        val resultPath = new Path(resultOutputPath)
+//        if(fs.exists(resultPath)) {
+//            fs.delete(resultPath, true)
+//        }
 
 
         // 加载配置文件  application.conf -> application.json --> application.properties

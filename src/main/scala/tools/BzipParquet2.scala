@@ -1,10 +1,9 @@
 package tools
 
-import Utils.{NBF, SchemaUtils}
-import beans.Log
-import org.apache.spark.SparkConf
+import beans.{Log, LogSchema}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{Row, SparkSession}
+
 
 
 object BzipParquet2 {
@@ -34,12 +33,12 @@ object BzipParquet2 {
       .getOrCreate()
 
 
-
-    //读取日志数据
-    val dataLog: RDD[Log] = sc.sparkContext.textFile(logInputPath)
+    val dataLog = sc.sparkContext.textFile(logInputPath)
       .map(line => line.split(",", -1))
       .filter(_.length >= 85)
       .map(arr => Log(arr))
+    //读取日志数据
+
 
     //将结果存储到本地磁盘
     val dataFrame = sc.createDataFrame(dataLog)
